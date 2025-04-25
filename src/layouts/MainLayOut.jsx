@@ -2,10 +2,12 @@ import React from 'react';
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
 import { Outlet } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
 
 const MainLayOut = () => {
     return (
         <div>
+            <Toaster></Toaster>
             {/* Navbar */}
             <div className='h-16'>
                 <Navbar></Navbar>
