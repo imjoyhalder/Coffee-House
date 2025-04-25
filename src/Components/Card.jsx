@@ -1,8 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { FaTrashCan } from "react-icons/fa6";
 
-const Card = ({ coffee }) => {
+const Card = ({ coffee, handleRemove }) => {
     const { id, name, category, type, origin, rating, popularity, image } = coffee;
+
+    //location hook 
+    const { pathname } = useLocation()
+
     return (
         <div className='flex relative'>
             <Link
@@ -21,6 +26,13 @@ const Card = ({ coffee }) => {
                     <p>Popular: {popularity}</p>
                 </div>
             </Link>
+            {
+                pathname === '/dashboard' && (
+                    <div onClick={()=>handleRemove(id)} className='absolute p-2 bg-warning rounded-full cursor-pointer -top-1 -right-0 md:-top-5 md:-right-1 '>
+                        <FaTrashCan />
+                    </div>
+                )
+            }
         </div>
     );
 };
